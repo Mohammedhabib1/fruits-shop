@@ -1,0 +1,180 @@
+Header .header-content-spacer {
+  flex: 1 1 auto;
+}
+
+// Sidenav
+.sidenav-container {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.profile-content {
+  position: sticky;
+  top: 0;
+  padding-top: 10px;
+  display: flex;
+  box-sizing: border-box;
+  padding: 0 20px;
+  width: 100%;
+  flex-direction: row;
+  align-items: center;
+  white-space: nowrap;
+  height: var(--mat-toolbar-standard-height);
+  // background: var(--mat-toolbar-container-background-color);
+  background-color: darkcyan;
+  color: var(--mat-toolbar-container-text-color);
+}
+
+.menu-container {
+  min-width: var(--mat-sidenav-container-width);
+}
+
+.menu-item {
+  padding: 10px 0;
+  border-bottom: 1px solid var(--mat-toolbar-container-background-color);
+  transition: background-color 0.3s;
+}
+
+
+
+
+//end code
+.topnav {
+  overflow: hidden;
+
+  // background-color: #333;
+}
+
+.topnav button {
+  float: left;
+  color: #df189c;
+  text-align: center;
+  // padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+  border: none;
+  font-weight: 800px;
+}
+
+.topnav button:hover {
+  background-color: #f8f523;
+  color: cadetblue;
+  border-radius: 10px;
+}
+
+.topnav a.active {
+  background-color: #04AA6D;
+  color: white;
+
+}
+
+.topnav-right {
+  margin-left: 1000px;
+  // text-align: end;
+  float: right;
+}
+
+// Body
+.page-body {
+  position: absolute;
+  overflow: auto;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+
+// new style
+$sidenav-width: 15rem;
+$submenu-width: 20%; // Adjust this as needed
+$min-submenu-item-width: 15rem; // Minimum width for submenu items
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+.sidenav {
+  height: 100%;
+  width: $sidenav-width;
+  position: fixed;
+  z-index: 1;
+  // top: 0;
+  left: 0;
+  background-color: rgb(33, 126, 180);
+  padding-top: 20px;
+}
+
+.menu-item {
+  padding: 10px;
+  color: rgb(240, 238, 238);
+  cursor: pointer;
+  position: relative;
+  margin: 0;
+
+  &:hover {
+    background-color: #bd5c5c;
+  }
+
+  .submenu {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: $sidenav-width;
+    background-color: cadetblue;
+    width: max($submenu-width, $min-submenu-item-width); // Ensure a minimum width
+    margin: 0;
+    padding: 0;
+
+    .submenu-item {
+      padding: 10px;
+      cursor: pointer;
+      position: relative;
+      margin: 0;
+      min-width: $min-submenu-item-width; // Minimum width for submenu items
+
+      &:hover {
+        background-color: #333;
+      }
+
+      .subsubmenu {
+        display: none;
+        position: absolute;
+        top: 0;
+        left: 100%; // Adjusted left position
+        background-color: rgb(192, 28, 118);
+        width: max($submenu-width, $min-submenu-item-width); // Ensure a minimum width
+        margin: 0;
+        padding: 0;
+
+        .subsubmenu-item {
+          padding: 10px;
+          cursor: pointer;
+          position: relative;
+          margin: 0;
+          min-width: $min-submenu-item-width; // Minimum width for submenu items
+
+          &:hover {
+            background-color: #777;
+          }
+        }
+      }
+
+      &:hover .subsubmenu {
+        display: block;
+      }
+    }
+  }
+
+  &:hover .submenu {
+    display: block;
+  }
+}
+
+.mat-drawer {
+  border-top-right-radius: 0 !important;
+}

@@ -1,0 +1,39 @@
+
+
+<h1 style="text-align: center;">Discount Form</h1>
+<div style="margin-left: 20%; margin-right: 20%;">
+    <form [formGroup]="formGroup" (ngSubmit)="submitForm()">
+
+        <div class="form-group">
+            <label for="name" class="form-label">Name</label>
+            <input type="text" class="form-control" id="name" formControlName="name">
+        </div>
+    
+        <div class="form-group">
+            <label for="description" class="form-label">Description</label>
+            <input type="text" class="form-control" id="description" formControlName="description">
+        </div>
+    
+        <div class="form-group">
+            <label for="discountType" class="form-label">Discount Type</label>
+            <input type="text" class="form-control" id="discountType" formControlName="discountType">
+        </div>
+    
+        <div class="form-group">
+            <label for="value" class="form-label">Value</label>
+            <input type="text" class="form-control" id="value" formControlName="value">
+        </div>
+    
+        <div class="form-group">
+            <label for="startDate" class="form-label">Start Date</label>
+            <input type="date" class="form-control" id="startDate" formControlName="startDate">
+        </div>
+    
+        <div class="form-group">
+            <label for="endDate" class="form-label">End Date</label>
+            <input type="date" class="form-control" id="endDate" formControlName="endDate">
+        </div>
+    
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>

@@ -21,6 +21,7 @@ export class ProductFormComponent {
   constructor(
     private routs: Router,
     private appService: AppService,
+    
     private fb: FormBuilder ) {
         this.productForm = this.fb.group({
       name: ['', Validators.required],
@@ -34,9 +35,7 @@ export class ProductFormComponent {
 
      onSubmit() {
       console.log(this.productForm.value);
-      this.appService.postProduct(this.productForm.value).subscribe((res) => {
-        console.log(res);
-      });
+      this.appService.postProduct(this.productForm.value).subscribe((res) => {console.log(res);});
     }
 
 

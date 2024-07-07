@@ -3,17 +3,16 @@ package com.idb.fruits.service.Impl;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.idb.fruits.constants.ResponseStatus;
 import com.idb.fruits.dto.Response;
 import com.idb.fruits.service.BaseService;
 
-import lombok.NonNull;
-
 public abstract class BaseServiceImpl<T, ID> implements BaseService<T, ID> {
 
-    @NonNull
+    @Autowired
     protected JpaRepository<T, ID> repository;
 
     public Response<?> save(T entity) {

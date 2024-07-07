@@ -1,12 +1,13 @@
-
-
-import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HeaderComponent } from "../header/header.component";
-import { FooterComponent } from "../footer/footer.component";
-import { AppService } from '../app.service';
 import { HttpClientModule } from '@angular/common/http';
-import { CartService } from '../all-service/cart.service';
+import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { AppService } from '../app.service';
+import { FooterComponent } from "../footer/footer.component";
+import { HeaderComponent } from "../header/header.component";
+import { Product } from '../model/product.model';
+import { addCartItem } from '../ngrx/cart.actions';
+
 
 @Component({
     selector: 'app-shop',
@@ -14,62 +15,25 @@ import { CartService } from '../all-service/cart.service';
     templateUrl: './shop.component.html',
     styleUrls: ['./shop.component.scss'],
     imports: [CommonModule, HeaderComponent, FooterComponent, HttpClientModule],
-    providers: [AppService, CartService]
+    providers: [AppService,]
 })
 export class ShopComponent implements OnInit {
 
-    products: any[] = [];
+    products: Product[] = [];
 
-    constructor(
-        private appService: AppService,
-        private cartService: CartService ) { }
+    constructor(private appService: AppService, private cartStore: Store<any>) { }
 
     ngOnInit() {
         this.appService.getAllProducts().subscribe((res) => {
-            this.products = res;
+            this.products = res.data;
             console.log(this.products);
         });
     }
 
-    // addToCart(product: any) {
-    //         this.cartService.addToCart(product);
-    //       }
+    addToCart(product: Product) {
+        this.cartStore.dispatch(addCartItem(product));
+    }
+
 }
 
-
-// src/app/shop/shop.component.ts
-// import { Component } from '@angular/core';
-// import { HeaderComponent } from "../header/header.component";
-// import { FooterComponent } from "../footer/footer.component";
-// import { AppService } from '../app.service';
-// import { HttpClientModule } from '@angular/common/http';
-// import { CartService } from '../all-service/cart.service';
-
-// @Component({
-//   selector: 'app-shop',
-//   standalone: true,
-//   templateUrl: './shop.component.html',
-//   styleUrls: ['./shop.component.scss'],
-//   imports: [HeaderComponent, FooterComponent, HttpClientModule],
-//   providers: [AppService, CartService]
-// })
-// export class ShopComponent {
-//   products: any[] = [];
-
-//   constructor(
-//     private appService: AppService,
-//     private cartService: CartService
-//   ) { }
-
-//   ngOnInit() {
-//     this.appService.getAllProducts().subscribe((res) => {
-//       this.products = res;
-//       console.log(this.products);
-//     });
-//   }
-
-//   addToCart(product: any) {
-//     this.cartService.addToCart(product);
-//   }
-// }
 

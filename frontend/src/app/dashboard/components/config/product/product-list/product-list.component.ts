@@ -4,6 +4,7 @@ import { Component } from '@angular/core';
 import { AppService } from '../../../../../app.service';
 import { CrudService } from '../../../../services/crud.service';
 
+
 @Component({
   selector: 'app-product-list',
   templateUrl: './product-list.component.html',
@@ -14,9 +15,13 @@ import { CrudService } from '../../../../services/crud.service';
   export class ProductListComponent {
 
   products: any[] = [];
+  
 
-  constructor(    private appService: AppService) { }
+  constructor(
+    private appService: AppService) { }
 
+
+  
   ngOnInit(): void {
     this.appService.getAllProducts().subscribe((res) => {
       this.products = res.data;
@@ -27,7 +32,9 @@ import { CrudService } from '../../../../services/crud.service';
 
 delecteProduct(id: number) {
   this.appService.deleteProduct(id).subscribe((res) => {
+    console.log(res);
     this.ngOnInit();
+
   });
 }
 

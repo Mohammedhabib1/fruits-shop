@@ -19,7 +19,7 @@ export class AppService {
   }
 
   getAllProducts(): Observable<any> {
-    return this.http.get<any>(`${apiUrl}/api/products`);
+    return this.http.get<any>(`${apiUrl}/api/product`);
   }
 
   getProductById(id: number): Observable<any> {

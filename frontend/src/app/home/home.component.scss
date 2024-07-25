@@ -1,0 +1,35 @@
+.homepage-slider {
+    position: relative;
+    overflow: hidden;
+}
+
+.single-homepage-slider {
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+.hero-text {
+    color: #fff;
+    text-align: left;
+}
+
+.boxed-btn {
+    background: #ff7f50;
+    color: #fff;
+    padding: 10px 20px;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.bordered-btn {
+    border: 2px solid #fff;
+    color: #fff;
+    padding: 10px 20px;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 5px;
+}

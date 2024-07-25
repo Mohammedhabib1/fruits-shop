@@ -1,0 +1,90 @@
+
+<div class="container mt-5, mb-5, col-md-10">
+  <h3> Product Form</h3>
+
+<form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+  <div class="form-group">
+    <label for="name">Name</label>
+    <input type="text" id="name" formControlName="name" class="form-control">
+  </div>
+  <div class="form-group">
+    <label for="unit">Unit</label>
+    <input type="text" id="unit" formControlName="unit" class="form-control">
+  </div>
+  <div class="form-group">
+    <label for="price">Price</label>
+    <input type="number" id="price" formControlName="price" class="form-control">
+  </div>
+  <div class="form-group">
+    <label for="description">Description</label>
+    <textarea id="description" formControlName="description" class="form-control"></textarea>
+  </div>
+  <div class="form-group">
+    <label for="quantity">Quantity</label>
+    <input type="number" id="quantity" formControlName="quantity" class="form-control">
+  </div>
+  <div class="form-group">
+    <label for="image">Image</label>
+    <input type="text" id="image" formControlName="image" class="form-control">
+    <!-- <input type="file" id="image" formControlName="image" class="form-control" > -->
+    
+  </div>
+
+  <div class="form-group">
+    <button type="submit" [disabled]="!productForm.valid">Submit</button>
+  <button type="button" routerLink="/dashboard/product-list">View Product List</button>
+  </div>
+  
+</form>
+</div>
+
+
+<!-- Base code of woner -->
+<!-- <h1 style="text-align: center;">Product Form</h1>
+<div style="margin-left: 20%; margin-right: 20%;">
+    <form [formGroup]="productForm" (ngSubmit)="submitForm()">
+
+        <div class="form-group">
+            <label for="name" class="form-label">Name</label>
+            <input type="text" class="form-control" id="name" formControlName="name">
+        </div>
+    
+        <div class="form-group">
+            <label for="description" class="form-label">Description</label>
+            <input type="text" class="form-control" id="description" formControlName="description">
+        </div>
+    
+        <div class="form-group">
+            <label for="price" class="form-label">Price</label>
+            <input type="text" class="form-control" id="price" formControlName="price">
+        </div>
+    
+        <div class="form-group">
+            <label for="quantityInStock" class="form-label">Quantity in Stock</label>
+            <input type="text" class="form-control" id="quantityInStock" formControlName="quantityInStock">
+        </div>
+    
+        <div class="form-group">
+            <label for="supplier" class="form-label">Supplier</label>
+            <input type="text" class="form-control" id="supplier" formControlName="supplier"> -->
+            <!-- <select formControlName="supplier">
+                <option *ngFor="let supplier of suppliers" [value]="supplier.id">{{supplier.name}}</option>
+            </select> -->
+        <!-- </div>
+    
+        <div class="form-group">
+            <label for="category" class="form-label">Category</label>
+            <input type="text" class="form-control" id="category" formControlName="category"> -->
+            <!-- <select formControlName="category">
+                <option *ngFor="let category of categories" [value]="category.id">{{category.name}}</option>
+            </select> -->
+        <!-- </div>
+    
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div> -->
+
+
+
+
+  

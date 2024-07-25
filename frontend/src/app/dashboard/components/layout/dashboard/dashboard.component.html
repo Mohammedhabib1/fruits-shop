@@ -1,0 +1,234 @@
+<mat-sidenav-container class="sidenav-container" *ngIf="config.shouldRun" [hasBackdrop]="config.hasBackdrop">
+    <mat-sidenav style="width: 15rem;" #sidenav [mode]="config.mode" [position]="config.position"
+        [opened]="config.isOpened">
+        <div class="profile-content text-center">
+            <h4><b>DAHSBOARD</b></h4>
+        </div>
+        <!-- <mat-divider></mat-divider> -->
+        <div class="container menu-container">
+
+            <div class="sidenav">
+
+                <!-- start-my-sidebar -->
+                <div class="menu-item">Customer
+                    <div class="submenu">
+                        <div class="submenu-item" [routerLink]="'customer-form'">customer-form</div>
+                        <div class="submenu-item" [routerLink]="'customer-list'">customer-list</div>
+                    </div>
+                </div>
+
+                <div class="menu-item">Product
+                    <div class="submenu">
+                        <div class="submenu-item" [routerLink]="'product-form'">product-form</div>
+                        <div class="submenu-item" [routerLink]="'product-list'">product-list</div>
+                    </div>
+                </div>
+
+
+                <div class="menu-item">Discount
+                    <div class="submenu">
+                        <div class="submenu-item" [routerLink]="'discount-form'">discount-form</div>
+                        <div class="submenu-item" [routerLink]="'discount-list'">discount-list</div>
+                    </div>
+                </div>
+
+                <!-- <div class="menu-item">Purchase
+                    <div class="submenu">
+                        <div class="subsubmenu-item" [routerLink]="'purchase-form'">Purchase-form</div>
+                        <div class="subsubmenu-item" [routerLink]="'purchase-list'">Purchase-list</div>
+                    </div>
+                </div> -->
+
+                <div class="menu-item">Cart
+                    <div class="submenu">
+                        <div class="submenu-item" [routerLink]="'cart-form'">Cart-form</div>
+                        <div class="submenu-item" [routerLink]="'cart-list'">Cart-list</div>
+                    </div>
+                </div>
+
+                <div class="menu-item">Order
+                    <div class="submenu">
+                        <div class="submenu-item" [routerLink]="'order-form'">Order-form</div>
+                        <div class="submenu-item" [routerLink]="'order-list'">Order-list</div>
+                    </div>
+                </div>
+
+                <div class="menu-item">Payment
+                    <div class="submenu">
+                        <div class="submenu-item" [routerLink]="'payment-form'">payment-form</div>
+                        <div class="submenu-item" [routerLink]="'payment-list'">payment-list</div>
+                    </div>
+                </div>
+                <!-- End-my-sidebar -->
+
+                <!-- <div class="menu-item">User
+                    <div class="submenu">
+                        <div class="submenu-item">Role
+                            <div class="submenu">
+                                <div class="submenu-item" [routerLink]="'permission-form'">Role Form</div>
+                                <div class="submenu-item" [routerLink]="'permission-list'">Role List</div>
+                            </div>
+                        </div>
+                        <div class="submenu-item">User
+                            <div class="submenu">
+                                <div class="submenu-item" [routerLink]="'user-form'">User Form</div>
+                                <div class="submenu-item" [routerLink]="'user-list'">User List</div>
+                            </div>
+                        </div>
+                        <div class="submenu-item">Role
+                            <div class="submenu">
+                                <div class="submenu-item" [routerLink]="'role-form'">Role-Form</div>
+                                <div class="submenu-item" [routerLink]="'role-list'">Role-List</div>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+                <!-- <div class="menu-item">Project Configuration
+                    <div class="submenu">
+                        <div class="submenu-item">Customer
+                            <div class="submenu">
+                                <div class="submenu-item" [routerLink]="'customer-form'">customer-form</div>
+                                <div class="submenu-item" [routerLink]="'customer-list'">customer-list</div>
+                            </div>
+                        </div>
+                       
+                        <div class="submenu-item">Employee
+                            <div class="submenu">
+                                <div class="submenu-item" [routerLink]="'employee-form'">employee-form</div>
+                                <div class="subsubmenu-item" [routerLink]="'employee-list'">employee-list</div>
+                            </div>
+                        </div>
+
+                        <div class="submenu-item">Category
+                            <div class="subsubmenu">
+                                <div class="subsubmenu-item" [routerLink]="'category-form'">category-form</div>
+                                <div class="subsubmenu-item" [routerLink]="'category-list'">category-list</div>
+                            </div>
+                        </div>
+
+                        <div class="submenu-item">Discount
+                            <div class="subsubmenu">
+                                <div class="subsubmenu-item" [routerLink]="'discount-form'">discount-form</div>
+                                <div class="subsubmenu-item" [routerLink]="'discount-list'">discount-list</div>
+                            </div>
+                        </div>
+
+                        <div class="submenu-item">Product
+                            <div class="subsubmenu">
+                                <div class="subsubmenu-item" [routerLink]="'product-form'">product-form</div>
+                                <div class="subsubmenu-item" [routerLink]="'product-list'">product-list</div>
+                            </div>
+                        </div>
+
+                        <div class="submenu-item">Supplier
+                            <div class="subsubmenu">
+                                <div class="subsubmenu-item" [routerLink]="'supplier-form'">supplier-form</div>
+                                <div class="subsubmenu-item" [routerLink]="'supplier-list'">supplier-list</div>
+                            </div>
+                        </div>
+
+                       
+                    </div>
+                </div> -->
+                <!-- <div class="menu-item">Project Data
+                    <div class="submenu">
+                        
+                        <div class="submenu-item">Inventory
+                            <div class="subsubmenu">
+                                <div class="subsubmenu-item" [routerLink]="'inventory-form'">inventory-form</div>
+                                <div class="subsubmenu-item" [routerLink]="'inventory-list'">inventory-list</div>
+                            </div>
+                        </div>
+
+                        <div class="submenu-item">Sales
+                            <div class="subsubmenu">
+                                <div class="subsubmenu-item" [routerLink]="'order-form'">sales-form</div>
+                                <div class="subsubmenu-item" [routerLink]="'order-list'">sales-list</div>
+                            </div>
+                        </div>
+
+                        <div class="submenu-item">Payment
+                            <div class="subsubmenu">
+                                <div class="subsubmenu-item" [routerLink]="'payment-form'">payment-form</div>
+                                <div class="subsubmenu-item" [routerLink]="'payment-list'">payment-list</div>
+                            </div>
+                        </div>
+
+
+                        <div class="submenu-item">Review
+                            <div class="subsubmenu">
+                                <div class="subsubmenu-item" [routerLink]="'review-form'">review-form</div>
+                                <div class="subsubmenu-item" [routerLink]="'review-list'">review-list</div>
+                            </div>
+                        </div>
+
+
+                        <div class="submenu-item">Transaction
+                            <div class="subsubmenu">
+                                <div class="subsubmenu-item" [routerLink]="'transaction-form'">transaction-form</div>
+                                <div class="subsubmenu-item" [routerLink]="'transaction-list'">transaction-list</div>
+                            </div>
+                        </div>
+                        <div class="submenu-item">Puchase
+                            <div class="subsubmenu">
+                                <div class="subsubmenu-item" [routerLink]="'purchase-form'">purchase-form</div>
+                                <div class="subsubmenu-item" [routerLink]="'purchase-list'">purchase-list</div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div> -->
+                <!-- <div class="menu-item">Report
+                    <div class="submenu">
+                        <div class="submenu-item"[routerLink]="'sales-report'">sales-report</div>
+                        <div class="submenu-item"[routerLink]="'inventory-report'">inventory-report</div>
+                    </div>
+                </div> -->
+                <!-- <div class="menu-item" [routerLink]="'about'">About
+                    
+                </div> -->
+
+
+            </div>
+
+
+            <!-- ... (remaining code) ... -->
+        </div>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <div class="page-body">
+            <div style="position: sticky; top: 0;">
+                <mat-toolbar style="background-color:darkcyan;">
+                    <button mat-icon-button (click)="sidenav.toggle()" class="example-icon"
+                        aria-label="Example icon-button with menu icon">
+                        <mat-icon>menu</mat-icon>
+                    </button>
+                    <span><b>Fruits Shop</b></span>
+                    <span class="header-content-spacer"></span>
+                    <!-- <button mat-icon-button>
+                        <mat-icon>favorite</mat-icon>
+                    </button> -->
+
+
+                    <div class="topnav">
+                        <div class="topnav-right">
+                            <!-- <a href="#search">Logout</a> -->
+                            <button (click)="logout()">
+                                <!-- <mat-icon>favorite</mat-icon> -->
+                                Logout
+                            </button>
+                        </div>
+                    </div>
+
+
+                    <!-- <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+                        <mat-icon>share</mat-icon>
+                    </button> -->
+                </mat-toolbar>
+            </div>
+            <router-outlet></router-outlet>
+        </div>
+
+    </mat-sidenav-content>
+</mat-sidenav-container>

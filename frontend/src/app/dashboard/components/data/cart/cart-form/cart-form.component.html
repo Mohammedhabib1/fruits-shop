@@ -1,0 +1,43 @@
+
+
+   
+    <div style="margin-left: 20%; margin-right: 20%;">
+        <div style="display: flex; justify-content: space-between;">
+            <h2>Cart Form</h2>
+            <!-- <button></button> -->
+        </div>
+    <form [formGroup]="cartForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="productName">Product Name</label>
+        <input id="productName" class="form-control" formControlName="productName" />
+        <div *ngIf="cartForm.get('productName')?.invalid && cartForm.get('productName')?.touched">
+          Product Name is required
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="quantity">Quantity</label>
+        <input id="quantity" class="form-control" type="number" formControlName="quantity" />
+        <div *ngIf="cartForm.get('quantity')?.invalid && cartForm.get('quantity')?.touched">
+          Quantity must be at least 1
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="price">Price</label>
+        <input id="price" class="form-control" type="number" formControlName="price" />
+        <div *ngIf="cartForm.get('price')?.invalid && cartForm.get('price')?.touched">
+          Price must be greater than 0
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="total">Total</label>
+        <input id="total" class="form-control" type="number" formControlName="total" />
+        <div *ngIf="cartForm.get('total')?.invalid && cartForm.get('total')?.touched">
+            Total must be greater than 0
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+
+  

@@ -14,4 +14,12 @@ export class PaymentService {
   postData(data: any): Observable<any> {
     return this.http.post(`${apiUrl}/api/payment`, data);
   }
+
+  getAllData(): Observable<any> {
+    return this.http.get(`${apiUrl}/api/payment`);
+  }
+
+  deleteData(id: number): Observable<any> {
+    return this.http.delete(`${apiUrl}/api/payment/${id}`);
+  }
 }

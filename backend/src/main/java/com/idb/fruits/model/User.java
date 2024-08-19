@@ -13,14 +13,22 @@ import lombok.Setter;
 public class User extends BaseEntity {
     @Column(name = "user_name", nullable = true, columnDefinition = "varchar(100)")
     private String name;
+
     @Column(name = "user_email", nullable = true, unique = true)
     private String email;
+
+    @Column(name = "user_role", nullable = true)
+    private String role;
+
     @Column(name = "user_phone", nullable = true, columnDefinition = "varchar(20)")
     private String phone;
+
     @Column(name = "user_address", nullable = true, columnDefinition = "text")
     private String address;
+
     @Column(name = "username", nullable = false, unique = true)
     private String username;
+    
     @Column(name = "password", nullable = false)
     private String password;
 }

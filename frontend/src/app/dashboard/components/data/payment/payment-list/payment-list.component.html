@@ -1,12 +1,166 @@
-<div style="display: flex; justify-content: space-between;">
+<div class="">
+    <div class="container">
+        <h2>Payment List</h2>
+
+        <table class="table table-striped table-bordered text-center">
+            <thead class="">
+                <tr class="row">
+                    <th class="col-1">ID</th>
+                    <th class="col-2">Card No</th>
+                    <th class="col-1">CVC</th>
+                    <th class="col-2">Amount</th>
+                    <th class="col-2">Payment Date</th>
+                    <th class="col-2">Expiration Date</th>
+                    <th class="col-2">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let payment of payments" class="row">
+                    <td class="col-1">{{ payment.id }}</td>
+                    <td class="col-2">{{ payment.cardno }}</td>
+                    <td class="col-1">{{ payment.cvcpwd }}</td>
+                    <td class="col-2">{{ payment.amount}}</td>
+                    <td class="col-2">{{ payment.date }}</td>
+                    <td class="col-2">{{ payment.expirDate }}</td>
+                    <td class="col-2"><button (click)="delecteData (payment.id)" class="btn btn-danger">Delete</button>
+                    </td>
+
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+<!-- Base code of woner -->
+<!-- <div style="display: flex; justify-content: space-between;">
+      <h2>Product List</h2>
+      <button></button>
+  </div>
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+  
+      <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef> Name </th>
+          <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+      </ng-container>
+     <ng-container matColumnDef="description">
+          <th mat-header-cell *matHeaderCellDef> Description </th>
+          <td mat-cell *matCellDef="let element"> {{element.description}} </td>
+      </ng-container>
+  
+     <ng-container matColumnDef="price">
+          <th mat-header-cell *matHeaderCellDef> Price </th>
+          <td mat-cell *matCellDef="let element"> {{element.price}} </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="quantityInStock">
+          <th mat-header-cell *matHeaderCellDef> QuantityInStock </th>
+          <td mat-cell *matCellDef="let element"> {{element.quantityInStock}} </td>
+      </ng-container>
+      <ng-container matColumnDef="supplier">
+          <th mat-header-cell *matHeaderCellDef> Supplier </th>
+          <td mat-cell *matCellDef="let element"> {{element.supplier.name}} </td>
+      </ng-container>
+      <ng-container matColumnDef="category">
+          <th mat-header-cell *matHeaderCellDef> Category </th>
+          <td mat-cell *matCellDef="let element"> {{element.category.name}} </td>
+      </ng-container>
+  
+  
+      <ng-container matColumnDef="actions">
+          <th mat-header-cell *matHeaderCellDef>Actions</th>
+          <td mat-cell *matCellDef="let i = index;">
+              <button mat-icon-button color="warn" (click)="delete(i)">
+                  <mat-icon>delete</mat-icon>
+              </button>
+              <button mat-icon-button color="primary" (click)="edit(i)">
+                  <mat-icon>edit</mat-icon>
+              </button>
+          </td>
+      </ng-container>
+  
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div style="display: flex; justify-content: space-between;">
+    <h2>Order List</h2>
+   
+</div>
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+    <ng-container matColumnDef="customer">
+        <th mat-header-cell *matHeaderCellDef> Customer </th>
+        <td mat-cell *matCellDef="let element"> {{element.customer.firstName}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="orderDate">
+        <th mat-header-cell *matHeaderCellDef> OrderDate </th>
+        <td mat-cell *matCellDef="let element"> {{element.orderDate}} </td>
+    </ng-container>
+    <ng-container matColumnDef="totalAmount">
+        <th mat-header-cell *matHeaderCellDef> TotalAmount </th>
+        <td mat-cell *matCellDef="let element"> {{element.totalAmount}} </td>
+    </ng-container>
+
+
+    <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef>Actions</th>
+        <td mat-cell *matCellDef="let i = index;">
+            <button mat-icon-button color="warn" (click)="delete(i)">
+                <mat-icon>delete</mat-icon>
+            </button>
+            <button mat-icon-button color="primary" (click)="edit(i)">
+                <mat-icon>edit</mat-icon>
+            </button>
+            <button *ngIf="isPaymentDue(i)" mat-icon-button color="info" (click)="payment(i)">
+                <mat-icon>edit</mat-icon>
+            </button>
+        </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table> -->
+
+
+
+
+
+
+
+<!-- <div style="display: flex; justify-content: space-between;">
     <h2>Payment List</h2>
-    <!-- <button></button> -->
+   
 </div>
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
     <ng-container matColumnDef="order">
         <th mat-header-cell *matHeaderCellDef> Order </th>
-        <!-- <td mat-cell *matCellDef="let element"> {{element.customer?.firstName}} </td> -->
+        
         <td mat-cell *matCellDef="let element"> {{element.order.customer?.firstName}} </td>
     </ng-container>
    <ng-container matColumnDef="amount">
@@ -40,4 +194,4 @@
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>
-
+ -->

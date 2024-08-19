@@ -1,39 +1,34 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { AppResponse } from '../../../../dto/response.dto';
-import { Payment } from '../../../../model/data/payment-model';
-import { CrudService } from '../../../../services/crud.service';
+import { Component } from '@angular/core';
+import { PaymentService } from '../../../../../all-service/payment.service';
+import { HttpClientModule } from '@angular/common/http';
+
 
 @Component({
   selector: 'app-payment-list',
   templateUrl: './payment-list.component.html',
-  styleUrls: ['./payment-list.component.scss']
+  styleUrls: ['./payment-list.component.scss'],
+  providers: [PaymentService,HttpClientModule]
 })
-export class PaymentListComponent implements OnInit {
+export class PaymentListComponent {
 
-  displayedColumns: string[] = ['order','amount','paymentDate','paymentMethod','actions'];
-  dataSource: Payment[] = [];
+  payments: any[] = [];
 
-  constructor(private service: CrudService, private router: Router) { }
+  constructor(
+    private paymentService: PaymentService,
+    ) { }
 
   ngOnInit(): void {
-    this.service.getList('payment').subscribe((res: AppResponse) => {
-      this.dataSource = res.data.content
-    }
-    );
+    this.paymentService.getAllData().subscribe((res) => {
+      this.payments = res.data;
+      console.log(this.payments);
+    });
   }
 
-  
-  delete(index: number) {
-    let id = this.dataSource[index].id as number;
-    this.service.delete(id, "payment").subscribe(() => {
-      const newData = this.dataSource.filter((s, i) => i != index);
-      this.dataSource = newData;
-    })
+  delecteData(id: number) {
+    this.paymentService.deleteData(id).subscribe((res) => {
+      console.log(res);
+      this.ngOnInit();
+    });
   }
 
-  edit(index: number) {
-    this.service.data = { ...this.dataSource[index] };
-    this.router.navigate(['/payment-form']);
-  }
 }

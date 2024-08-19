@@ -47,8 +47,7 @@ import { AuthInterceptor } from './services/interceptors/auth-interceptor.servic
 const routes: Routes =
   [
     {
-      path: '',
-      component: DashboardComponent,
+      path: '', component: DashboardComponent,
       canActivate: [canActivate],
       canActivateChild: [canActivateChild],
       children: [

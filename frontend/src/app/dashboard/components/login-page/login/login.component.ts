@@ -13,7 +13,7 @@ export class LoginComponent implements OnInit{
 
   constructor(
     private authService: AuthService,
-    private rourter: Router,
+    private router: Router,
     private formBuilder: FormBuilder
   ) {
     this.loginForm = this.formBuilder.group({
@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit{
     //   // Perform login action here using form values:
     //   const formValues = this.loginForm.value;
     //   this.authService.login(formValues).subscribe((res: LoginResponse) => {
-    //     sessionStorage.setItem('rs-token', res.accessToken as string);
+    //     sessionStorage.setItem('user', res.accessToken as string);
     //     this.rourter.navigate(["/"]);
     //   });
     //   // E.g., calling an ausubscribetication service
@@ -37,8 +37,8 @@ export class LoginComponent implements OnInit{
     // } else {
     //   // Handle form validation errors here if needed
     // }
-    sessionStorage.setItem('rs-token', "asdfghjkl");
-    this.rourter.navigate(["/dashboard"]);
+    sessionStorage.setItem('user', "asdfghjkl");
+    this.router.navigate(["/dashboard"]);
   }
 
 }

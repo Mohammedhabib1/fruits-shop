@@ -19,7 +19,7 @@ export class AuthService {
   }
 
   checkLogin(): boolean {
-    const token = sessionStorage.getItem('rs-token');
+    const token = sessionStorage.getItem('user');
     return token !== null && token?.length > 8;
   }
 

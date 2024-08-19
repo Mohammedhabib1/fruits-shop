@@ -5,12 +5,13 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { PaymentService } from '../all-service/payment.service';
 import { Router, RouterLink, RouterModule } from '@angular/router';
+import { OrderService } from '../all-service/checkout.service';
 
 @Component({
   selector: 'app-payment',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule, HttpClientModule, RouterModule,RouterLink],
-  providers: [PaymentService],
+  imports: [ReactiveFormsModule, CommonModule, HttpClientModule, RouterModule, RouterLink],
+  providers: [OrderService],
   templateUrl: './payment.component.html',
   styleUrls: ['./payment.component.scss']
 })
@@ -18,9 +19,9 @@ export class PaymentComponent {
   paymentForm: FormGroup;
 
   constructor(
-    private paymentService: PaymentService,
+    private orderService: OrderService,
     private fb: FormBuilder,
-    private r:Router
+    private r: Router
   ) {
     this.paymentForm = this.fb.group({
       holdername: ['', Validators.required],
@@ -33,11 +34,14 @@ export class PaymentComponent {
   }
 
   onSubmit() {
-    console.log(this.paymentForm.value);
-    this.paymentService.postData(this.paymentForm.value).subscribe((res) => {
-      console.log(res);
-    });
-    this.r.navigate(['success']);
+    const order = sessionStorage.getItem('order');
+    if (order) {
+      const orderdata = JSON.parse(order);
+      orderdata['payment'] = this.paymentForm.value;
+      this.orderService.postData(orderdata).subscribe((res) => { console.log(res); });
+      this.r.navigate(['success']);
+    }
   }
+
 }
 

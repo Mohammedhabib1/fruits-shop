@@ -22,4 +22,12 @@ export class OrderService {
   deleteData(id: number): Observable<any> {
     return this.http.delete(`${apiUrl}/api/order/${id}`);
   }
+
+  getOrder(id: number): Observable<any> {
+    return this.http.get<any>(`${apiUrl}/${id}`);
+  }
 }
+
+
+
+

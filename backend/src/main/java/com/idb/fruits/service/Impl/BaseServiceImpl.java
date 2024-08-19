@@ -16,9 +16,9 @@ public abstract class BaseServiceImpl<T, ID> implements BaseService<T, ID> {
     protected JpaRepository<T, ID> repository;
 
     public Response<?> save(T entity) {
-        Response<?> response = this.validate(entity);
+        Response<T> response =(Response<T>) this.validate(entity);
         if(response.getStatus().equals(ResponseStatus.SUCCESS)) {
-            repository.save(entity);
+            response.setData(repository.save(entity));
         }
         return response;
     }

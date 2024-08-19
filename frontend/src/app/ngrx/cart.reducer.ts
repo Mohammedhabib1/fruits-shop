@@ -1,5 +1,5 @@
 import { createReducer, on } from '@ngrx/store';
-import { addCartItem, reduceCartItem, removeCartItem } from './cart.actions';
+import { addCartItem, reduceCartItem, removeCartItem, setCartItems } from './cart.actions';
 import { Product } from '../model/product.model';
 
 export interface CartState {
@@ -20,7 +20,7 @@ const getCartItems = (): CartState => {
     return {};
 }
 
-const setCartItems = (state: CartState): void => {
+const setCartState = (state: CartState): void => {
     sessionStorage.setItem(CART_KEY, JSON.stringify(state));
 }
 
@@ -35,7 +35,7 @@ const addItemToCart = (state: CartState, product: Product): CartState => {
         newProduct.quantity = 1;
         newState[product.id] = newProduct;
     }
-    setCartItems(newState);
+    setCartState(newState);
     return newState;
 }
 
@@ -49,7 +49,7 @@ const reduceItemFromCart = (state: CartState, product: Product): CartState => {
         } else {
             delete newState[product.id];
         }
-        setCartItems(newState);
+        setCartState(newState);
         return newState;
     }
     return newState;
@@ -58,7 +58,21 @@ const reduceItemFromCart = (state: CartState, product: Product): CartState => {
 const removeItemFromCart = (state: CartState, product: Product): CartState => {
     const newState = { ...state };
     delete newState[product.id];
-    setCartItems(newState);
+    setCartState(newState);
+    return newState;
+}
+
+const setItemsToCart = (state: CartState, items: {cart: Product[]}): CartState => {
+    let newState: any = {};
+    if (items.cart.length) {
+        for (let i = 0; i < items.cart.length; i++) {
+            const item = items.cart[i];
+            if (item && item.quantity) {
+                newState[item.id] = item;
+            }
+        }
+    }
+    setCartState(newState);
     return newState;
 }
 
@@ -68,5 +82,6 @@ export const cartReducer = createReducer(
     initialCartState,
     on(addCartItem, addItemToCart),
     on(reduceCartItem, reduceItemFromCart),
-    on(removeCartItem, removeItemFromCart)
+    on(removeCartItem, removeItemFromCart),
+    on(setCartItems, setItemsToCart)
 );

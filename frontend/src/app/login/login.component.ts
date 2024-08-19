@@ -24,6 +24,7 @@ export class LoginComponent {
   constructor(
     private formBuilder: FormBuilder,
     private homeService: HomeService,
+    private rourter: Router,
     private router: Router
   ) {
     this.loginForm = this.formBuilder.group({
@@ -38,9 +39,13 @@ export class LoginComponent {
         console.log(resp);
         console.log(resp.status == ResponseStatus.SUCCESS);
         if (resp.status == ResponseStatus.SUCCESS) {
-          // localStorage.setItem('token', JSON.stringify(resp.data));
           sessionStorage.setItem('user', JSON.stringify(resp.data));
-          this.router.navigate(['/home']);
+          if(resp.data.role == "ADMIN"){
+            console.log(resp.data.role);
+            this.router.navigate(["/dashboard"]);
+          } else {
+            this.router.navigate(['/home']);
+          }
         }
       });
     }
@@ -89,7 +94,7 @@ export class LoginComponent {
 //     //   // Perform login action here using form values:
 //     //   const formValues = this.loginForm.value;
 //     //   this.authService.login(formValues).subscribe((res: LoginResponse) => {
-//     //     sessionStorage.setItem('rs-token', res.accessToken as string);
+//     //     sessionStorage.setItem('user', res.accessToken as string);
 //     //     this.rourter.navigate(["/"]);
 //     //   });
 //     //   // E.g., calling an ausubscribetication service
@@ -97,7 +102,7 @@ export class LoginComponent {
 //     // } else {
 //     //   // Handle form validation errors here if needed
 //     // }
-//     sessionStorage.setItem('rs-token', "asdfghjkl");
+//     sessionStorage.setItem('user', "asdfghjkl");
 //     this.rourter.navigate(["/dashboard"]);
 //   }
 

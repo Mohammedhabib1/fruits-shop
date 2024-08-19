@@ -15,7 +15,7 @@ export class AuthInterceptor implements HttpInterceptor {
 
     const modifiedReq = req.clone({
       setHeaders: {
-        Authorization: `Bearer ${sessionStorage.getItem('rs-token')}`
+        Authorization: `Bearer ${sessionStorage.getItem('user')}`
       }
     });
 

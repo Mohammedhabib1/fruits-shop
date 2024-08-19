@@ -10,31 +10,31 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.idb.fruits.dto.Response;
-import com.idb.fruits.model.Checkout;
-import com.idb.fruits.service.CheckoutService;
+import com.idb.fruits.model.Order;
+import com.idb.fruits.service.OrderService;
 
 import lombok.RequiredArgsConstructor;
 
 @RestController
-@RequestMapping("api/checkout")
+@RequestMapping("api/order")
 @RequiredArgsConstructor
-public class CheckoutController {
+public class OrderController {
 
-    private final CheckoutService checkoutService;
+    private final OrderService orderService;
 
     @PostMapping
-    public ResponseEntity<Response<?>> save(@RequestBody Checkout checkout) {
-        return ResponseEntity.ok(checkoutService.save(checkout));
+    public ResponseEntity<Response<?>> save(@RequestBody Order order) {
+        return ResponseEntity.ok(orderService.save(order));
     }
 
     @GetMapping
     public ResponseEntity<Response<?>> findAll() {
-        return ResponseEntity.ok(checkoutService.findAll());
+        return ResponseEntity.ok(orderService.findAll());
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Response<?>> deleteById(@PathVariable Long id) {
-        return ResponseEntity.ok(checkoutService.deleteById(id));
+        return ResponseEntity.ok(orderService.deleteById(id));
     }
 
 }

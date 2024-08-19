@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
 import { CartComponent } from '../app/cart/cart.component';
-import { CheckoutComponent } from '../app/checkout/checkout.component';
+
 import { ContactComponent } from '../app/contact/contact.component';
 import { HomeComponent } from '../app/home/home.component';
 import { PaymentComponent } from '../app/payment/payment.component';
@@ -9,13 +9,14 @@ import { ShopComponent } from '../app/shop/shop.component';
 import { LoginComponent } from '../app/login/login.component';
 import { SignupComponent } from '../app/signup/signup.component';
 import { SuccessComponent } from '../app/success/success.component';
+import { OrderComponent } from '../app/checkout/checkout.component';
 
 export const homeRoutes: Routes = [
   {
     path: '', component: ProductComponent
   },
   {
-    path: 'checkout', component: CheckoutComponent
+    path: 'order', component: OrderComponent
   },
   {
     path: 'contact', component: ContactComponent

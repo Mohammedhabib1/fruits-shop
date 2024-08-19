@@ -1,14 +1,15 @@
 
 import { HttpClientModule } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { CheckoutService } from '../../../../../all-service/checkout.service';
+import { OrderService } from '../../../../../all-service/checkout.service';
+
 
 
 @Component({
   selector: 'app-order-list',
   templateUrl: './order-list.component.html',
   styleUrls: ['./order-list.component.scss'],
-  providers: [CheckoutService,HttpClientModule]
+  providers: [OrderService,HttpClientModule]
 })
 
   export class OrderListComponent {
@@ -17,12 +18,12 @@ import { CheckoutService } from '../../../../../all-service/checkout.service';
   
 
   constructor(
-    private checkoutService: CheckoutService) { }
+    private orderService: OrderService) { }
 
 
   
   ngOnInit(): void {
-    this.checkoutService.getAllData().subscribe((res) => {
+    this.orderService.getAllData().subscribe((res) => {
       this.orders = res.data;
       console.log(this.orders);
     });
@@ -30,7 +31,7 @@ import { CheckoutService } from '../../../../../all-service/checkout.service';
 
 
 delecteData(id: number) {
-  this.checkoutService.deleteData(id).subscribe((res) => {
+  this.orderService.deleteData(id).subscribe((res) => {
     console.log(res);
     this.ngOnInit();
 

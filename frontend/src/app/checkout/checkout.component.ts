@@ -5,7 +5,7 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { RouterModule } from '@angular/router';
 import { FooterComponent } from "../../app/footer/footer.component";
 import { HeaderComponent } from '../../app/header/header.component';
-import { CheckoutService } from '../all-service/checkout.service';
+import { OrderService } from '../all-service/checkout.service';
 import { Product } from '../model/product.model';
 import { Observable, map } from 'rxjs';
 import { Store, select } from '@ngrx/store';
@@ -13,16 +13,16 @@ import { CartState } from '../ngrx/cart.reducer';
 import { getCartSelector } from '../ngrx/cart.selector';
 
 @Component({
-    selector: 'app-checkout',
+    selector: 'app-order',
     standalone: true,
     templateUrl: './checkout.component.html',
     styleUrl: './checkout.component.scss',
     imports: [HeaderComponent, FooterComponent, RouterModule, CommonModule, ReactiveFormsModule, HttpClientModule],
-    providers: [CheckoutService]
+    providers: [OrderService]
 })
-export class CheckoutComponent {
+export class OrderComponent {
 
-    checkoutForm: FormGroup;
+    orderForm: FormGroup;
     subTotal: number = 0;
     cartItems: Product[] = [];
     cartItems$!: Observable<Product[]>;
@@ -35,9 +35,9 @@ export class CheckoutComponent {
     constructor(
         private cartStore: Store<CartState>,
         // private routs: Router,
-        private checkoutService: CheckoutService,
+        private checkoutService: OrderService,
         private fb: FormBuilder,) {
-        this.checkoutForm = this.fb.group({
+        this.orderForm = this.fb.group({
             name: ['', Validators.required],
             email: ['', Validators.required],
             phone: ['', Validators.required],
@@ -46,7 +46,7 @@ export class CheckoutComponent {
         });
         localStorage.setItem('total', this.subTotal.toString());
         const user = JSON.parse(sessionStorage.getItem('user') || '{}');
-        this.checkoutForm.patchValue({
+        this.orderForm.patchValue({
             name: user.name,
             email: user.email,
             phone: user.phone,
@@ -58,8 +58,9 @@ export class CheckoutComponent {
     }
 
     onSubmit() {
-        console.log(this.checkoutForm.value);
-        this.checkoutService.postData(this.checkoutForm.value).subscribe((res) => { console.log(res); });
+        console.log(this.orderForm.value);
+        const data = {...this.orderForm.value, user:{id:1}, status: "Pending"}
+        this.checkoutService.postData(data).subscribe((res) => { console.log(res); });
     }
 
 
